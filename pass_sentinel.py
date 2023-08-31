@@ -17,9 +17,14 @@ class PasswordGeneratorApp:
         CTk.set_appearance_mode('system')
         CTk.set_default_color_theme('green')
 
+        # Change theme button
+        self.theme_image = CTk.CTkImage(dark_image=Image.open('sun.png'), light_image=Image.open('moon.png'))
+        self.theme_button = CTk.CTkButton(self.root, command=self.change_theme, text='', image=self.theme_image)
+        self.theme_button.place(relx=0.05, rely=0.08, relheight=0.15, relwidth=0.08, anchor='nw')
+
         # Password frame and label
         self.password_frame = CTk.CTkFrame(self.root)
-        self.password_frame.place(relx=0.05, rely=0.08, relheight=0.15, relwidth=0.82, anchor='nw')
+        self.password_frame.place(relx=0.14, rely=0.08, relheight=0.15, relwidth=0.74, anchor='nw')
 
         self.password_var = CTk.StringVar(value='Your password will be shown here.')
         self.password_label = CTk.CTkLabel(self.password_frame, textvariable=self.password_var, font=('Consolas', 14))
@@ -28,7 +33,7 @@ class PasswordGeneratorApp:
         # Copy button
         self.copy_image = CTk.CTkImage(Image.open('copy.png'))
         self.copy_button = CTk.CTkButton(self.root, command=self.copy_password, text='', image=self.copy_image)
-        self.copy_button.place(relx=0.88, rely=0.08, relheight=0.15, relwidth=0.09, anchor='nw')
+        self.copy_button.place(relx=0.89, rely=0.08, relheight=0.15, relwidth=0.08, anchor='nw')
 
         # Checkboxes and check frame
         self.check_frame = CTk.CTkFrame(self.root)
@@ -111,6 +116,13 @@ class PasswordGeneratorApp:
             self.min_specials.set(0)
             self.update_label(self.min_specials, self.min_specials_label, 'Min Specials')
 
+    def change_theme(self):
+        """Change current theme of the app"""
+        if CTk.get_appearance_mode() == 'Dark':
+            CTk.set_appearance_mode('light')
+        else:
+            CTk.set_appearance_mode('dark')
+
     def update_label(self, slider, label, text):
         """Update labels according to slider values"""
         label.configure(text=f'{text}: {int(slider.get())}')
@@ -183,7 +195,7 @@ class PasswordGeneratorApp:
         CTk.CTkLabel(info_window, text=' Chamrobit ', font=('Pacifico', 18)).place(relx=0.7, rely=0.2, anchor='c')
         CTk.CTkLabel(info_window, text='chamrobit@gmail.com', font=('Prompt Medium', 14)).place(relx=0.7, rely=0.45, anchor='c')
         CTk.CTkLabel(info_window, text='chamrobit@outlook.com', font=('Prompt Medium', 14)).place(relx=0.7, rely=0.6, anchor='c')
-        CTk.CTkLabel(info_window, text='Version: 1.0.0', font=('Consolas', 14)).place(relx=0.7, rely=0.8, anchor='c')
+        CTk.CTkLabel(info_window, text='Version: 1.0.1', font=('Consolas', 14)).place(relx=0.7, rely=0.8, anchor='c')
 
 if __name__ == "__main__":
     root = CTk.CTk()
