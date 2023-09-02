@@ -12,13 +12,13 @@ class PasswordGeneratorApp:
         self.root.minsize(500, 250)
         self.root.geometry('600x300')
         self.root.title('Pass Sentinel')
-        self.root.iconbitmap('locked.ico')
+        self.root.iconbitmap('assets/locked.ico')
 
         CTk.set_appearance_mode('system')
         CTk.set_default_color_theme('green')
 
         # Change theme button
-        self.theme_image = CTk.CTkImage(dark_image=Image.open('sun.png'), light_image=Image.open('moon.png'))
+        self.theme_image = CTk.CTkImage(dark_image=Image.open('assets/sun.png'), light_image=Image.open('assets/moon.png'))
         self.theme_button = CTk.CTkButton(self.root, command=self.change_theme, text='', image=self.theme_image)
         self.theme_button.place(relx=0.05, rely=0.08, relheight=0.15, relwidth=0.08, anchor='nw')
 
@@ -31,7 +31,7 @@ class PasswordGeneratorApp:
         self.password_label.place(relx=0.01, rely=0.01, relheight=0.95, relwidth=0.98, anchor='nw')
 
         # Copy button
-        self.copy_image = CTk.CTkImage(Image.open('copy.png'))
+        self.copy_image = CTk.CTkImage(Image.open('assets/copy.png'))
         self.copy_button = CTk.CTkButton(self.root, command=self.copy_password, text='', image=self.copy_image)
         self.copy_button.place(relx=0.89, rely=0.08, relheight=0.15, relwidth=0.08, anchor='nw')
 
@@ -88,7 +88,7 @@ class PasswordGeneratorApp:
         self.generate_button.place(relx=0.4, rely=0.75, relwidth=0.45, relheight=0.15, anchor='nw')
 
         # About me button
-        self.info_img = CTk.CTkImage(Image.open('info.png'))
+        self.info_img = CTk.CTkImage(Image.open('assets/info.png'))
         self.info_button = CTk.CTkButton(self.root, command=self.about_me, text='', image=self.info_img)
         self.info_button.place(relx=0.87, rely=0.75, relwidth=0.1, relheight=0.15, anchor='nw')
 
@@ -190,7 +190,7 @@ class PasswordGeneratorApp:
         # Make the top-level window stay on top of the main window
         info_window.wm_attributes("-topmost", 1)
 
-        qr_img = CTk.CTkImage(Image.open('qrlight.png'), Image.open('qrdark.png'), size=(140, 140))
+        qr_img = CTk.CTkImage(Image.open('assets/qrlight.png'), Image.open('assets/qrdark.png'), size=(140, 140))
         CTk.CTkLabel(info_window, image=qr_img, text='', height=500, width=500).place(relx=0, rely=0.05, relheight=0.9, relwidth=0.5, anchor='nw')
         CTk.CTkLabel(info_window, text=' Chamrobit ', font=('Pacifico', 18)).place(relx=0.7, rely=0.2, anchor='c')
         CTk.CTkLabel(info_window, text='chamrobit@gmail.com', font=('Prompt Medium', 14)).place(relx=0.7, rely=0.45, anchor='c')
